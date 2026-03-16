@@ -7,66 +7,66 @@ type DocumentItem = {
   id: string;
   title: string;
   description: string;
-  path: string;
+  archivePath: string;
   fileName: string;
 };
 
 const documents: DocumentItem[] = [
   {
-    id: 'menu',
+    id: 'candies',
     title: 'Конфеты',
-    description: 'Актуальные вкусы и цены на заказ.',
-    path: '/documents/menu-cupcakes.txt',
-    fileName: 'menu-cupcakes.txt'
+    description: 'Нежные, тягучие и очень опасные для самоконтроля.',
+    archivePath: '/archives/candies.zip',
+    fileName: 'candies.zip'
   },
   {
-    id: 'price-list',
+    id: 'glazing',
     title: 'Глазировка',
-    description: 'Пакеты для дней рождения, свадеб и корпоративов.',
-    path: '/documents/event-price-list.txt',
-    fileName: 'event-price-list.txt'
+    description: 'Хрустящая сладкая корочка, от которой сложно оторваться.',
+    archivePath: '/archives/glazing.zip',
+    fileName: 'glazing.zip'
   },
   {
-    id: 'care',
+    id: 'cakes-pies-rolls',
     title: 'Пирожные, пироги, рулеты',
-    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
-    path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt'
+    description: 'Мягкое тесто, сочная начинка и тот самый домашний вкус.',
+    archivePath: '/archives/cakes-pies-rolls.zip',
+    fileName: 'cakes-pies-rolls.zip'
   },
   {
-    id: 'care',
+    id: 'gingerbread',
     title: 'Пряники',
-    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
-    path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt'
+    description: 'Аромат специй и уют в каждом укусе.',
+    archivePath: '/archives/gingerbread.zip',
+    fileName: 'gingerbread.zip'
   },
   {
-    id: 'care',
+    id: 'sugar-cookies',
     title: 'Сахарное печенье',
-    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
-    path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt'
+    description: 'Легкий хруст, сливочная сладость и идеальная пара к чаю.',
+    archivePath: '/archives/sugar-cookies.zip',
+    fileName: 'sugar-cookies.zip'
   },
   {
-    id: 'care',
+    id: 'sweet-pastry',
     title: 'Сдобное',
-    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
-    path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt'
+    description: 'Пышное, румяное и только из печи.',
+    archivePath: '/archives/sweet-pastry.zip',
+    fileName: 'sweet-pastry.zip'
   },
   {
-    id: 'care',
+    id: 'puff-pastry',
     title: 'Слойка',
-    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
-    path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt'
+    description: 'Воздушные слои и аппетитный хруст с первого укуса.',
+    archivePath: '/archives/puff-pastry.zip',
+    fileName: 'puff-pastry.zip'
   },
   {
-    id: 'care',
+    id: 'sandwiches',
     title: 'Сэндвич',
-    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
-    path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt'
+    description: 'Сытный перекус, который хочется повторить еще раз.',
+    archivePath: '/archives/sandwiches.zip',
+    fileName: 'sandwiches.zip'
   }
 ];
 
@@ -79,7 +79,7 @@ function App() {
       setLoadingId(documentItem.id);
       setError(null);
 
-      const response = await fetch(documentItem.path);
+      const response = await fetch(documentItem.archivePath);
       if (!response.ok) {
         throw new Error(`Не удалось загрузить файл: ${response.status}`);
       }
@@ -94,7 +94,7 @@ function App() {
       anchor.remove();
       URL.revokeObjectURL(objectUrl);
     } catch {
-      setError('Ошибка загрузки. Проверьте, что файл существует в папке public/documents.');
+      setError('Ошибка загрузки. Проверьте, что архивы есть в папке public/archives.');
     } finally {
       setLoadingId(null);
     }
@@ -124,7 +124,7 @@ function App() {
                   type="button"
                   onClick={() => handleDownload(documentItem)}
                   disabled={loadingId === documentItem.id}>
-                  {loadingId === documentItem.id ? 'Загрузка...' : 'Скачать документ'}
+                  {loadingId === documentItem.id ? 'Загрузка...' : 'Скачать архив'}
                 </button>
               </article>
             ))}

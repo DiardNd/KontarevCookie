@@ -1,5 +1,8 @@
 #root {
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-header {
@@ -46,6 +49,9 @@
 }
 
 .landing {
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
   max-width: 980px;
   margin: 0 auto;
   padding: 30px 20px 56px;
@@ -246,10 +252,6 @@
 
   .about {
     margin-top: 24px;
-  }
-
-  .footer-inner {
-    padding: 18px 16px 22px;
   }
 
   .footer-contacts {
