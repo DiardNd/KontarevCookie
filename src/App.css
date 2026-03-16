@@ -1,0 +1,313 @@
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 248, 241, 0.96);
+  border-bottom: 1px solid #f1d9c8;
+  backdrop-filter: blur(4px);
+}
+
+.header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-menu {
+  font-weight: 800;
+  color: #7d2c1d;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.header-nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.header-nav a {
+  color: #7d2c1d;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  text-decoration: underline;
+}
+
+.landing {
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 30px 20px 56px;
+}
+
+.hero {
+  margin-bottom: 30px;
+  scroll-margin-top: 88px;
+}
+
+.eyebrow {
+  color: #a53f2b;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 8px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #3d180f;
+}
+
+.lead {
+  max-width: 680px;
+  margin-top: 14px;
+  font-size: 1.08rem;
+  color: #5d2f21;
+}
+
+.documents {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+#products {
+  scroll-margin-top: 88px;
+}
+
+#about {
+  scroll-margin-top: 88px;
+}
+
+.section-title {
+  margin: 0 0 14px;
+  color: #3d180f;
+}
+
+.document-card {
+  background: #fff8f2;
+  border: 1px solid #f6dbc8;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.document-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.12rem;
+  color: #3b1d13;
+}
+
+.document-card p {
+  margin: 0 0 14px;
+  color: #6a3e2f;
+}
+
+.document-card button {
+  background: #a53f2b;
+  color: #fff;
+  border: 1px solid #a53f2b;
+  border-radius: 10px;
+  padding: 10px 14px;
+  width: 100%;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.document-card button:hover:enabled {
+  background: #8b3524;
+}
+
+.document-card button:disabled {
+  opacity: 0.75;
+  cursor: wait;
+}
+
+.error {
+  margin-top: 16px;
+  color: #b90d0d;
+  font-weight: 600;
+}
+
+.about {
+  margin-top: 28px;
+  max-width: 760px;
+}
+
+.about p {
+  margin: 0;
+  color: #6a3e2f;
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.site-footer {
+  width: 100%;
+  margin-top: 24px;
+  background: #7d2c1d;
+  color: #fff;
+}
+
+.footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 22px 20px 28px;
+}
+
+.footer-title {
+  margin: 0 0 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.footer-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+}
+
+.footer-contacts a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-contacts a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+
+  .header-nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px 14px;
+  }
+
+  .landing {
+    padding: 24px 16px 44px;
+  }
+
+  .hero {
+    margin-bottom: 22px;
+    scroll-margin-top: 132px;
+  }
+
+  #products,
+  #about {
+    scroll-margin-top: 132px;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.7rem, 6vw, 2.3rem);
+  }
+
+  .lead {
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    margin-bottom: 12px;
+    font-size: 1.45rem;
+  }
+
+  .documents {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .document-card {
+    padding: 16px;
+  }
+
+  .about {
+    margin-top: 24px;
+  }
+
+  .footer-contacts {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 10px 14px;
+  }
+
+  .header-menu {
+    font-size: 0.82rem;
+  }
+
+  .header-nav a {
+    font-size: 0.95rem;
+  }
+
+  .landing {
+    padding: 20px 14px 36px;
+  }
+
+  .eyebrow {
+    font-size: 0.78rem;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 0.95rem;
+  }
+
+  .document-card h3 {
+    font-size: 1.03rem;
+  }
+
+  .document-card button {
+    font-size: 0.92rem;
+    padding: 10px 12px;
+  }
+
+  .error {
+    font-size: 0.95rem;
+  }
+
+  .footer-title {
+    font-size: 1rem;
+  }
+
+  .footer-contacts a {
+    font-size: 0.95rem;
+  }
+}
