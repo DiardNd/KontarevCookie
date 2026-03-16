@@ -1,69 +1,104 @@
-import { useState } from 'react'
-import './App.css'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import { useState } from 'react';
+import './App.css';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
 type DocumentItem = {
-  id: string
-  title: string
-  description: string
-  path: string
-  fileName: string
-}
+  id: string;
+  title: string;
+  description: string;
+  path: string;
+  fileName: string;
+};
 
 const documents: DocumentItem[] = [
   {
     id: 'menu',
-    title: 'Меню кексов',
+    title: 'Конфеты',
     description: 'Актуальные вкусы и цены на заказ.',
     path: '/documents/menu-cupcakes.txt',
-    fileName: 'menu-cupcakes.txt',
+    fileName: 'menu-cupcakes.txt'
   },
   {
     id: 'price-list',
-    title: 'Прайс для мероприятий',
+    title: 'Глазировка',
     description: 'Пакеты для дней рождения, свадеб и корпоративов.',
     path: '/documents/event-price-list.txt',
-    fileName: 'event-price-list.txt',
+    fileName: 'event-price-list.txt'
   },
   {
     id: 'care',
-    title: 'Памятка по хранению',
+    title: 'Пирожные, пироги, рулеты',
     description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
     path: '/documents/cupcake-care-guide.txt',
-    fileName: 'cupcake-care-guide.txt',
+    fileName: 'cupcake-care-guide.txt'
   },
-]
+  {
+    id: 'care',
+    title: 'Пряники',
+    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
+    path: '/documents/cupcake-care-guide.txt',
+    fileName: 'cupcake-care-guide.txt'
+  },
+  {
+    id: 'care',
+    title: 'Сахарное печенье',
+    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
+    path: '/documents/cupcake-care-guide.txt',
+    fileName: 'cupcake-care-guide.txt'
+  },
+  {
+    id: 'care',
+    title: 'Сдобное',
+    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
+    path: '/documents/cupcake-care-guide.txt',
+    fileName: 'cupcake-care-guide.txt'
+  },
+  {
+    id: 'care',
+    title: 'Слойка',
+    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
+    path: '/documents/cupcake-care-guide.txt',
+    fileName: 'cupcake-care-guide.txt'
+  },
+  {
+    id: 'care',
+    title: 'Сэндвич',
+    description: 'Как перевозить и хранить кексы, чтобы они оставались свежими.',
+    path: '/documents/cupcake-care-guide.txt',
+    fileName: 'cupcake-care-guide.txt'
+  }
+];
 
 function App() {
-  const [loadingId, setLoadingId] = useState<string | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [loadingId, setLoadingId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleDownload = async (documentItem: DocumentItem) => {
     try {
-      setLoadingId(documentItem.id)
-      setError(null)
+      setLoadingId(documentItem.id);
+      setError(null);
 
-      const response = await fetch(documentItem.path)
+      const response = await fetch(documentItem.path);
       if (!response.ok) {
-        throw new Error(`Не удалось загрузить файл: ${response.status}`)
+        throw new Error(`Не удалось загрузить файл: ${response.status}`);
       }
 
-      const fileBlob = await response.blob()
-      const objectUrl = URL.createObjectURL(fileBlob)
-      const anchor = document.createElement('a')
-      anchor.href = objectUrl
-      anchor.download = documentItem.fileName
-      document.body.append(anchor)
-      anchor.click()
-      anchor.remove()
-      URL.revokeObjectURL(objectUrl)
+      const fileBlob = await response.blob();
+      const objectUrl = URL.createObjectURL(fileBlob);
+      const anchor = document.createElement('a');
+      anchor.href = objectUrl;
+      anchor.download = documentItem.fileName;
+      document.body.append(anchor);
+      anchor.click();
+      anchor.remove();
+      URL.revokeObjectURL(objectUrl);
     } catch {
-      setError('Ошибка загрузки. Проверьте, что файл существует в папке public/documents.')
+      setError('Ошибка загрузки. Проверьте, что файл существует в папке public/documents.');
     } finally {
-      setLoadingId(null)
+      setLoadingId(null);
     }
-  }
+  };
 
   return (
     <>
@@ -75,7 +110,6 @@ function App() {
           <h1>Домашние кексы для любого события</h1>
           <p className="lead">
             Нежные кексы ручной работы: от классической ванили до насыщенного шоколада.
-            Скачайте документы ниже, чтобы быстро выбрать подходящий вариант.
           </p>
         </section>
 
@@ -89,8 +123,7 @@ function App() {
                 <button
                   type="button"
                   onClick={() => handleDownload(documentItem)}
-                  disabled={loadingId === documentItem.id}
-                >
+                  disabled={loadingId === documentItem.id}>
                   {loadingId === documentItem.id ? 'Загрузка...' : 'Скачать документ'}
                 </button>
               </article>
@@ -101,8 +134,8 @@ function App() {
         <section id="about" className="about">
           <h2 className="section-title">О нас</h2>
           <p>
-            Мы готовим кексы небольшими партиями, используем натуральные ингредиенты и
-            помогаем собрать набор под любой формат события.
+            Мы готовим кексы небольшими партиями, используем натуральные ингредиенты и помогаем
+            собрать набор под любой формат события.
           </p>
         </section>
 
@@ -114,7 +147,7 @@ function App() {
       </main>
       <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
