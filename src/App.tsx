@@ -16,7 +16,7 @@ const documents: DocumentItem[] = [
     id: 'candies',
     title: 'Конфеты',
     description: 'Нежные, тягучие и очень опасные для самоконтроля.',
-    archivePath: '/archives/candies.zip',
+    archivePath: '/KontarevCookie/archives/candies.zip',
     fileName: 'candies.zip'
   },
   {
